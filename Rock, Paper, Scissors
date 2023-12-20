@@ -1,0 +1,91 @@
+'''
+Creating a function that is going to play the "rock, paper, scissors" game with us.
+It is going to take in the users choice and generate the computers choice and see if the user wins based on what they chose to play 
+for that particular round.
+'''
+
+import random as rd  
+
+def rock_paper_scissors(choice): 
+
+    select = ['Rock', 'Paper', 'Scissors'] 
+    
+    cpu_choice = rd.choice(select) 
+    
+    if cpu_choice == choice:
+        return f"You chose {choice}, CPU chose {cpu_choice}. It's a tie."
+        
+    elif cpu_choice == "Rock" and choice == "Paper":
+        return f"You chose {choice}, CPU chose {cpu_choice}. You win!"
+        
+    elif cpu_choice == "Paper" and choice == "Scissors":
+        return f"You chose {choice}, CPU chose {cpu_choice}. You win!"
+    
+    elif cpu_choice == "Scissors" and choice == "Rock":
+        return f"You chose {choice}, CPU chose {cpu_choice}. You win!"
+    
+    else:
+        return f"You chose {choice}, CPU chose {cpu_choice}. You lose :("
+
+while True:
+    user_choice = input("Please enter Rock, Paper or Scissors").capitalize()
+    
+    outcome = rock_paper_scissors(user_choice)
+    
+    print(outcome)
+    
+    terminate = input("Go again? (Y/N): ").upper()
+    
+    if terminate == 'Y':
+        continue
+    
+    elif terminate == 'N':
+        break 
+
+#Same game but it terminates after 3 games:
+import random as rd
+
+def rock_paper_scissors(choice):
+    
+    select = ['Rock', 'Paper', 'Scissors'] 
+    
+    cpu_choice = rd.choice(select) 
+    
+    if cpu_choice == choice:
+        return f"You chose {choice}, CPU chose {cpu_choice}. It's a tie."
+        
+    elif cpu_choice == "Rock" and choice == "Paper":
+        return f"You chose {choice}, CPU chose {cpu_choice}. You win!"
+        
+    elif cpu_choice == "Paper" and choice == "Scissors":
+        return f"You chose {choice}, CPU chose {cpu_choice}. You win!"
+    
+    elif cpu_choice == "Scissors" and choice == "Rock":
+        return f"You chose {choice}, CPU chose {cpu_choice}. You win!"
+
+    else:
+        return f"You chose {choice}, CPU chose {cpu_choice}. You lose :("
+
+games_played = 0
+
+for i in range(3):
+    
+    user_choice = input("Please enter Rock, Paper or Scissors").capitalize()
+    
+    outcome = rock_paper_scissors(user_choice)
+    
+    print(outcome)
+    
+    games_played += 1
+    
+    if games_played < 3:
+        terminate = input("Go again? (Y/N): ").upper()
+        
+        if terminate == 'Y':
+            continue
+        
+        elif terminate == 'N':
+            break 
+        
+        else: 
+            print("\nYou have reached the maximum number of times you can play (3). ")
